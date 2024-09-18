@@ -1,0 +1,72 @@
+body{
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 auto;
+}
+
+header{
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  color: rgb(17, 83, 175);
+}
+
+footer{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 10px;
+}
+
+main{
+  border: 2px solid black;
+  border-radius: 12px;
+  width: 80%;
+  height: auto;
+  margin: 0 auto; /* Added margin to give some space from the top */
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center; /* Ensures all content within main is centered */
+}
+
+p{
+  font-size: 11px;
+}
+
+a{
+  font-size: 16px;
+  font-weight: 300;
+}
+
+table {
+  margin: 0 auto; /* Center the table */
+  border-collapse: collapse; /* Remove default space between table cells */
+}
+
+th, td {
+  padding: 10px; /* Add padding inside each table cell */
+  border: 1px solid black; /* Add border to each cell for clarity */
+  text-align: left; /* Align text to the left inside table cells */
+}
+
+th {
+  background-color: #ded9d9; /* Optional: Add background color to table headers */
+}
+
+form{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div{
+  margin: 20px;
+}
+
+#data{
+  text-align: right;
+}
+
+input{
+  margin-top: 5px;
+}
