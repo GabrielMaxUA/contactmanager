@@ -1,0 +1,38 @@
+body{
+  box-sizing: border-box;
+  text-align: center;
+}
+
+header, footer{
+  
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+}
+
+footer{
+  font-weight: 100;
+  font-size: 8px;
+}
+
+main{
+  border: 2px solid black;
+  border-radius: 12px;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+h2{
+  padding: 30px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+p{
+  font-size: 11px;
+}
+
+a{
+  font-size: 12px;
+  font-weight: 300;
+}
