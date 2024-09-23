@@ -24,7 +24,7 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
         <label for="">First name:</label>
         <input type="text" name = "first_name"><br>
         <label for="">Last name:</label>
-        <input type="text" name = "Last_name"><br>
+        <input type="text" name = "last_name"><br>
         <label for="">Email:</label>
         <input type="text" name = "Email_address"><br>
         <label for="">Phone:</label>

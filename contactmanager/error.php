@@ -13,19 +13,14 @@
 <body>
   <?php include("header.php"); ?>
   <main>
-    <h2>Database Error</h2>
-    <p>Error connecting to the database... Please try again later
-      </p>
-    <p>The database must be instaled
-      </p>
-    <p>MySQL must be running
-      </p>
-    <p> Error message: <?php echo $_SESSION["database_error"];
-      ?>
+    <h2>Error</h2>
+   
+    <p><?php echo $_SESSION["add_error"];?>
       </p>
     <p>
-      <a href="index.php">Back to Contact List</a>
-      </p>
+      <a href="index.php">Back to Home page</a>
+      <a href="add_contact_form.php">Back to Contact From</a>
+    </p>
   </main>
 <?php include("footer.php")?>
 </body>
