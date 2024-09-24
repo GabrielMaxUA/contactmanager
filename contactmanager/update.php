@@ -11,7 +11,7 @@ $phone = filter_input(INPUT_POST, 'phone');
 
 // Validate the inputs
 if ($contact_id == null || $first_name == null || $last_name == null || $email == null || $phone == null) {
-    $_SESSION['update_error'] = 'Invalid contact data. Please make sure all fields are filled';
+    $_SESSION['add_error'] = 'Invalid contact data. Please make sure all fields are filled';
     header("Location: error.php");
     die();
 }
@@ -37,6 +37,6 @@ try {
 
 // Redirect to confirmation page
 $_SESSION['fullName'] = $first_name . ' ' . $last_name;
-header("Location: confirmation.php");
+header("Location: update_confirmation.php");
 die();
 ?>
