@@ -57,6 +57,7 @@ if ($contact_id) {
       </div>
       <div id="buttons">
         <input type="hidden" name="contact_id" value="<?php echo $contact_id; ?>">
+        <input type="button" value="Cancel" onclick="window.location.href='index.php';"><br>
         <input type="submit" value="Save Contact"><br>
       </div>
     </form>

@@ -31,8 +31,9 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
         <input type="text" name = "phone"><br>
       </div>
       <div id ="buttons">
-        <label for="">Cancel</label>
-        <input type="submit" value = "Save Contact"><br>
+      <input type="hidden" name="contact_id" value="<?php echo $contact_id; ?>">
+      <input type="button" value="Cancel" onclick="window.location.href='index.php';"><br>
+      <input type="submit" value="Save Contact"><br>
       </div>
 
     </form>
