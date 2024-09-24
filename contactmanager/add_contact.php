@@ -3,7 +3,7 @@ session_start();
 //getting data from form
 $first_name = filter_input(INPUT_POST, 'first_name');
 $last_name = filter_input(INPUT_POST, 'last_name');
-$email = filter_input(INPUT_POST, 'Email_address');
+$email = filter_input(INPUT_POST, 'Email');
 $phone = filter_input(INPUT_POST, 'phone');
 
 // code to save data to SQL database
@@ -20,6 +20,7 @@ if ($first_name == null || $last_name == null || $email == null || $phone == nul
     //adding data to the database
     $query = "INSERT INTO contacts (firstName, lastName, Email, phone) VALUES (:firstName, :lastName, :Email, :phone)";
     $statement = $db->prepare($query);
+
     $statement->bindValue(':firstName', $first_name);
     $statement->bindValue(':lastName', $last_name);
     $statement->bindValue(':Email', $email);
