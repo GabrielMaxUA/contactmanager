@@ -40,6 +40,11 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
           <label for="">Phone:</label>
           <input type="text" name = "phone"><br>
         </div>
+
+        <div class="labs" id = "date">
+          <label for="">DOB:</label>
+          <input type="date" name = "DOB"><br>
+        </div>
         
         <div class="labs" id = "Labs">
           <label for="">Status:</label>

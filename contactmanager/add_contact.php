@@ -7,6 +7,7 @@ $last_name = filter_input(INPUT_POST, 'last_name');
 $email = filter_input(INPUT_POST, 'Email');
 $phone = filter_input(INPUT_POST, 'phone');
 $status = filter_input(INPUT_POST, 'status');
+$DOB = filter_input(INPUT_POST, 'DOB');
 
 
 $queryContacts = 'SELECT * FROM contacts'; //retrieve variable
@@ -27,7 +28,7 @@ foreach($contacts as $contact){
 
 // code to save data to SQL database
 //validating the inputs from add_contact_form
-if ($first_name == null || $last_name == null || $email == null || $phone == null) {
+if ($first_name == null || $last_name == null || $email == null || $phone == null || $DOB == null) {
     $_SESSION['add_error'] = 'Invalid contact data. Please make sure all fields are filled';
     //redirecting to an error page
     $url = "error.php";
@@ -37,7 +38,7 @@ if ($first_name == null || $last_name == null || $email == null || $phone == nul
    //connecting to the database once or per request
 
     //adding data to the database
-    $query = "INSERT INTO contacts (firstName, lastName, Email, phone, status) VALUES (:firstName, :lastName, :Email, :phone, :status)";
+    $query = "INSERT INTO contacts (firstName, lastName, Email, phone, status, DOB ) VALUES (:firstName, :lastName, :Email, :phone, :status, :DOB)";
     $statement = $db->prepare($query);
 
     $statement->bindValue(':firstName', $first_name);
@@ -45,7 +46,8 @@ if ($first_name == null || $last_name == null || $email == null || $phone == nul
     $statement->bindValue(':Email', $email);
     $statement->bindValue(':phone', $phone);
     $statement->bindValue(':status', $status);
-
+    $statement->bindValue(':DOB', $DOB);
+    
     $statement->execute();
     $statement->closeCursor();
 }

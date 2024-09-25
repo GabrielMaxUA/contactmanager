@@ -8,6 +8,7 @@ $first_name = filter_input(INPUT_POST, 'first_name');
 $last_name = filter_input(INPUT_POST, 'last_name');
 $email = filter_input(INPUT_POST, 'Email');
 $phone = filter_input(INPUT_POST, 'phone');
+$DOB = filter_input(INPUT_POST, 'DOB');
 
 $queryContacts = 'SELECT * FROM contacts'; //retrieve variable
 $statement1 = $db-> prepare($queryContacts); //connecting data and webpage
@@ -28,20 +29,21 @@ foreach($contacts as $contact){
 
 
 // Validate the inputs
-if ($contact_id == null || $first_name == null || $last_name == null || $email == null || $phone == null) {
+if ($contact_id == null || $first_name == null || $last_name == null || $email == null || $phone == null || $DOB == null) {
     $_SESSION['add_error'] = 'Invalid contact data. Please make sure all fields are filled';
     header("Location: error.php");
     die();
 }
 
 // Update existing contact
-$query = 'UPDATE contacts SET firstName = :firstName, lastName = :lastName, Email = :Email, phone = :phone WHERE contactID = :contact_id';
+$query = 'UPDATE contacts SET firstName = :firstName, lastName = :lastName, Email = :Email, phone = :phone, DOB = :DOB WHERE contactID = :contact_id';
 $statement = $db->prepare($query);
 $statement->bindValue(':contact_id', $contact_id, PDO::PARAM_INT);
 $statement->bindValue(':firstName', $first_name);
 $statement->bindValue(':lastName', $last_name);
 $statement->bindValue(':Email', $email);
 $statement->bindValue(':phone', $phone);
+$statement->bindValue(':DOB', $DOB);
 
 // Execute the statement
 try {

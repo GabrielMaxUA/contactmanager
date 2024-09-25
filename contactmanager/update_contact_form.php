@@ -20,6 +20,7 @@ if ($contact_id) {
         $last_name = $contact['lastName'];
         $email = $contact['eMail']; // Ensure column name matches exactly in the database
         $phone = $contact['phone'];
+        $DOB = $contact['DOB'];
     } else {
         // If no contact found, redirect to an error page
         header("Location: error.php");
@@ -65,6 +66,11 @@ if ($contact_id) {
           <label for="phone">Phone:</label> 
           <input type="text" name="phone" value="<?php echo htmlspecialchars($phone); ?>"><br>
         </div>
+
+        <div class="labs" id = "date">
+          <label for="">DOB:</label> 
+          <input type="date" name="DOB" value="<?php echo htmlspecialchars($DOB); ?>"><br>
+        </div>
         
         <div class="labs" id = "Labs">
           <label for="">Status:</label>
@@ -80,7 +86,7 @@ if ($contact_id) {
           
       </div>
     </form>
-    <p><a href="confirmation.php">View contacts</a></p>
+    <!-- <p><a href="confirmation.php">View contacts</a></p> -->
   </main>
   <?php include("footer.php"); ?>
 </body>

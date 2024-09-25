@@ -85,6 +85,11 @@ input{
   justify-content: end;
 }
 
+#date{
+ margin-right: 25px ;
+  
+}
+
 .inputs{
   display: flex;
   align-items: center;
@@ -93,3 +98,4 @@ input{
 #Labs{
   margin-top: 20px;
 }
+
