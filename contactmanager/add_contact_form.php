@@ -21,15 +21,33 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
     <h2>Add contact</h2>
     <form action = "add_contact.php" method = "post">
       <div id ="data">
-        <label for="">First name:</label>
-        <input type="text" name = "first_name"><br>
-        <label for="">Last name:</label>
-        <input type="text" name = "last_name"><br>
-        <label for="">Email:</label>
-        <input type="text" name = "Email"><br>
-        <label for="">Phone:</label>
-        <input type="text" name = "phone"><br>
-      </div>
+        <div class="labs">
+          <label for="">First name:</label>
+          <input type="text" name = "first_name"><br>
+        </div>
+        
+        <div class="labs">
+          <label for="">Last name:</label>
+          <input type="text" name = "last_name"><br>
+        </div>
+        
+        <div class="labs">
+          <label for="">Email:</label>
+          <input type="text" name = "Email"><br>
+        </div>
+      
+        <div class="labs">
+          <label for="">Phone:</label>
+          <input type="text" name = "phone"><br>
+        </div>
+        
+        <div class="labs" id = "Labs">
+          <label for="">Status:</label>
+              <div class="inputs">
+                <input type="radio" name = "status" value = "member">Member<br>
+                <input type="radio" name = "status" value = "nonmember" checked>Non-Member<br>
+              </div>
+        </div>
       <div id ="buttons">
       <input type="hidden" name="contact_id" value="<?php echo $contact_id; ?>">
       <input type="button" value="Cancel" onclick="window.location.href='index.php';"><br>

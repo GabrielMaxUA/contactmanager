@@ -25,8 +25,9 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
-        <th>&nbsp</th> <!-- for edit button -->
+        <th>Status</th> <!-- for edit button -->
         <th>&nbsp</th> <!-- for delete button -->
+        <th>&nbsp</th> <!-- for status column -->
       </tr>
         <?php foreach($contacts as $contact):?> <!--: instead of { } like in other languages -->
          <tr>
@@ -34,6 +35,7 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
           <td><?php echo $contact['lastName'];?></td>
           <td><?php echo $contact['eMail'];?></td>
           <td><?php echo $contact['phone'];?></td>
+          <td><?php echo $contact['status'];?></td>
           <td>
           <form action="update_contact_form.php" method="post">
               <input type="hidden" name="contact_id" value="<?php echo $contact['contactID']; ?>">  

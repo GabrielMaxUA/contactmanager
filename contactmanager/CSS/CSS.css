@@ -59,12 +59,10 @@ form{
   align-items: center;
 }
 
-div{
-  margin: 20px;
-}
+
 
 #data{
-  text-align: right;
+  text-align: center;
 }
 
 input{
@@ -74,9 +72,24 @@ input{
 #buttons{
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 #buttons input{
   margin: 10px;
 }
 
+.labs{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.inputs{
+  display: flex;
+  align-items: center;
+}
+
+#Labs{
+  margin-top: 20px;
+}

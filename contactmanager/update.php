@@ -9,6 +9,24 @@ $last_name = filter_input(INPUT_POST, 'last_name');
 $email = filter_input(INPUT_POST, 'Email');
 $phone = filter_input(INPUT_POST, 'phone');
 
+$queryContacts = 'SELECT * FROM contacts'; //retrieve variable
+$statement1 = $db-> prepare($queryContacts); //connecting data and webpage
+$statement1-> execute(); //running the connection while requested
+$contacts = $statement1-> fetchAll(); //retrieving All the data from the DB with creating the variable
+$statement1-> closeCursor();//after data is fetched the dt connection closes
+
+foreach($contacts as $contact){
+    if($email == $contact['eMail'] && $contact_id != $contact['contactID']){
+        $_SESSION['add_error'] = 'User already exists. Please Check your fields for any type mistakes';
+        //redirecting to an error page
+        $url = "error.php";
+        header("Location: " . $url); //header is the method to redirect
+        die();
+    }
+}
+
+
+
 // Validate the inputs
 if ($contact_id == null || $first_name == null || $last_name == null || $email == null || $phone == null) {
     $_SESSION['add_error'] = 'Invalid contact data. Please make sure all fields are filled';

@@ -45,20 +45,39 @@ if ($contact_id) {
   <main>
     <h2>Update Contact</h2>
     <form action="update.php" method="post">
-      <div id="data">
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" value="<?php echo htmlspecialchars($first_name); ?>"><br>
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" value="<?php echo htmlspecialchars($last_name); ?>"><br>
-        <label for="Email">Email:</label>
-        <input type="text" name="Email" value="<?php echo htmlspecialchars($email); ?>"><br>
-        <label for="phone">Phone:</label>
-        <input type="text" name="phone" value="<?php echo htmlspecialchars($phone); ?>"><br>
-      </div>
-      <div id="buttons">
-        <input type="hidden" name="contact_id" value="<?php echo $contact_id; ?>">
-        <input type="button" value="Cancel" onclick="window.location.href='index.php';"><br>
-        <input type="submit" value="Save Contact"><br>
+      <div id ="data">
+        <div class="labs">
+          <label for="first_name">First Name:</label>
+          <input type="text" name="first_name" value="<?php echo $contact['firstName'];?>"><br>
+        </div>
+        
+        <div class="labs">
+          <label for="last_name">Last Name:</label>
+          <input type="text" name="last_name" value="<?php echo htmlspecialchars($last_name); ?>"><br>
+        </div>
+        
+        <div class="labs">
+          <label for="Email">Email:</label>
+          <input type="text" name="Email" value="<?php echo htmlspecialchars($email); ?>"><br>
+        </div>
+      
+        <div class="labs">
+          <label for="phone">Phone:</label> 
+          <input type="text" name="phone" value="<?php echo htmlspecialchars($phone); ?>"><br>
+        </div>
+        
+        <div class="labs" id = "Labs">
+          <label for="">Status:</label>
+            <input type="radio" name = "status" value = "member" <?php echo ($contact['status'] == 'member') ? 'checked' : '' ?>>
+            Member<br>
+            <input type="radio" name = "status" value = "nonmember" <?php echo ($contact['status'] == 'member') ? 'checked' : '' ?>checked>Non-Member<br>
+        </div>
+        <div id ="buttons">
+          <input type="hidden" name="contact_id" value="<?php echo $contact_id; ?>">
+          <input type="button" value="Cancel" onclick="window.location.href='index.php';"><br>
+          <input type="submit" value="Save Contact"><br>
+        </div>
+          
       </div>
     </form>
     <p><a href="confirmation.php">View contacts</a></p>
