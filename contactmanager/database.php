@@ -3,7 +3,7 @@
 
   //to access data autorisation is requiered of the owner of the DB
   $dsn = 'mysql:host=localhost;dbname=contact_manager';// NO SPACES!!! data source name with location/name of the database 
-  $username = 'root';
+  $username = 'maximUA';
   $password = 'MaxGabriel123';
 
   try{
