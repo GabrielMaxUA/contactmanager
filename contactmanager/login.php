@@ -23,14 +23,25 @@ if ($row) { // Check if a row was returned
       header("Location: login_confirmation.php");
       die();
   } else {
-    $_SESSION["add_error"] =  "Invalid username or password";
-    header("Location: error.php");
-      die(); // Handle invalid login
+
+    $_SESSION = [];
+    session_destroy();
+    header("Location: login_form.php");
+    die();
+    // $_SESSION["add_error"] =  "Invalid username or password";
+    // header("Location: error.php");
+    //   die(); // Handle invalid login
   }
-} else {
-  $_SESSION["add_error"] = "Invalid username or password";
-  header("Location: error.php");
-  die(); // Handle invalid login // Handle case where user doesn't exist
+} 
+else {
+
+  $_SESSION = [];
+  session_destroy();
+  header("Location: login_form.php");
+  die();
+  // $_SESSION["add_error"] = "Invalid username or password";
+  // header("Location: error.php");
+  // die(); // Handle invalid login // Handle case where user doesn't exist
 }
 ?>
 

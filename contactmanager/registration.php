@@ -43,9 +43,8 @@ foreach($registrations as $registration){
   $statement->execute();
   $statement->closeCursor();
 
-
+$_SESSION['isLoggedIn'] = TRUE;
 $_SESSION['userName'] = $user_name;
-
 // redirecting to confirmation page
 $url = "registration_confirmation.php";
 header("Location: " . $url); //header is the method to redirect

@@ -17,7 +17,8 @@
     <p>Welcome, <?php echo $_SESSION['userName'] ?>. </p>
     <p>Nice to see you again!</p>
     <p>We look foraward working with you</p>
-    <p>your login status is <?php echo $_SESSION['isLoggedIn']?></p>
+    <p>your are successfully logged in.</p>
+    <p>now you can view the contact list.</p>
     
       <a href="index.php">Contact List</a>
       </p>

@@ -33,8 +33,10 @@ p{
 
 a{
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 200;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
+
 
 table {
   margin: 0 auto; /* Center the table */

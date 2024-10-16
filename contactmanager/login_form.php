@@ -20,12 +20,14 @@
         
         <div class="labs">
           <label for="">Password:</label>
-          <input type="password" name = "password"><br>
+          <input type = "password" name = "password"><br>
         </div>
        
       <div id ="buttons">
       <input type="submit" value="Login"><br>
       </div>
+
+      <p><a href="registration_form.php">Registration</a></p>
     </form>
   </main>
 <?php include("footer.php")?>

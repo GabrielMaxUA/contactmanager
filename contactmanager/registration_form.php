@@ -27,10 +27,8 @@
       <div id ="buttons">
       <input type="submit" value="Register"><br>
       </div>
-
+      <p><a href = "login_form.php">Back to login page</a><br></p>
     </form>
-    
-    
   </main>
 <?php include("footer.php")?>
 </body>

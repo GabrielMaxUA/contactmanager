@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(!isset($_SESSION['isLoggedIn'])){
+  $_SESSION = [];
+  session_destroy();
+  header("Location: login_form.php");
+  die();
+}
 require("database.php");// ' or " doesnt really matter in php.
 $queryContacts = 'SELECT * FROM contacts'; //retrieve variable
 $statement1 = $db-> prepare($queryContacts); //connecting data and webpage
@@ -55,8 +62,7 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
         <?php endforeach; ?> <!-- end of forearch loop -->
     </table>
     <p><a href="add_contact_form.php">Add contact</a></p>
-    <p><a href="registration_form.php">Registration</a></p>
-    <p><a href="login_form.php">Login</a></p>
+    <p><a href="logout.php">Logout</a></p>
     
   </main>
 <?php include("footer.php")?>

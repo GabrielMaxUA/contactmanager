@@ -17,6 +17,7 @@
     <p>Thank you, <?php echo $_SESSION['userName']; ?>. </p>
     <p>Saving your contact information</p>
     <p>We look foraward working with you</p>
+    <p>Yopu are now loged in and can view the contact list</p>
       <a href="index.php">Contact List</a>
       </p>
   </main>
