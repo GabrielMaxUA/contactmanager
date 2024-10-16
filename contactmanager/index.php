@@ -55,6 +55,8 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
         <?php endforeach; ?> <!-- end of forearch loop -->
     </table>
     <p><a href="add_contact_form.php">Add contact</a></p>
+    <p><a href="registration_form.php">Registration</a></p>
+    <p><a href="login_form.php">Login</a></p>
     
   </main>
 <?php include("footer.php")?>

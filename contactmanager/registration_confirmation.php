@@ -7,20 +7,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact manager - Database Error</title>
+  <title>Contact manager - Confirmation</title>
   <link rel="stylesheet" type = "text/css" href="CSS/CSS.css">
 </head>
 <body>
   <?php include("header.php"); ?>
-  <main>
-    <h2>Error</h2>
-   
-    <p><?php echo $_SESSION["add_error"];?>
+  <main id = "confirmation">
+    <h2>registration Confirmation</h2>
+    <p>Thank you, <?php echo $_SESSION['userName']; ?>. </p>
+    <p>Saving your contact information</p>
+    <p>We look foraward working with you</p>
+      <a href="index.php">Contact List</a>
       </p>
-    <p>
-      <a href="index.php">Back to Home page</a>
-      <a href="add_contact_form.php">Back to Contact From</a>
-    </p>
   </main>
 <?php include("footer.php")?>
 </body>
