@@ -65,6 +65,9 @@ form{
 
 #data{
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 input{
@@ -84,12 +87,21 @@ input{
 .labs{
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
+}
+
+label{
+  width: 150px;
+  text-align: right;
 }
 
 #date{
- margin-right: 25px ;
-  
+ margin-right: 25px;
+}
+
+#image{
+  text-align: center;
+  margin-top: 40px;
 }
 
 .inputs{
@@ -101,3 +113,6 @@ input{
   margin-top: 20px;
 }
 
+#buttons{
+  margin-top: 30px;
+}

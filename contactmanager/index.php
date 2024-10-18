@@ -1,11 +1,13 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['isLoggedIn'])){
   $_SESSION = [];
   session_destroy();
   header("Location: login_form.php");
   die();
 }
+
 require("database.php");// ' or " doesnt really matter in php.
 $queryContacts = 'SELECT * FROM contacts'; //retrieve variable
 $statement1 = $db-> prepare($queryContacts); //connecting data and webpage

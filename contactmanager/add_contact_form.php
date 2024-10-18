@@ -45,6 +45,12 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
           <label for="">DOB:</label>
           <input type="date" name = "DOB"><br>
         </div>
+
+
+        <div class="labs" id = "image">
+          <label for="">Upload Image:</label>
+          <input type="file" name = "image"><br>
+        </div>
         
         <div class="labs" id = "Labs">
           <label for="">Status:</label>
@@ -53,10 +59,12 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
                 <input type="radio" name = "status" value = "nonmember" checked>Non-Member<br>
               </div>
         </div>
-      <div id ="buttons">
-      <input type="hidden" name="contact_id" value="<?php echo $contact_id; ?>">
-      <input type="button" value="Cancel" onclick="window.location.href='index.php';"><br>
-      <input type="submit" value="Save Contact"><br>
+
+        <div id ="buttons">
+          <input type="hidden" name="contact_id" value="<?php echo $contact_id; ?>">
+          <input type="button" value="Cancel" onclick="window.location.href='index.php';"><br>
+          <input type="submit" value="Save Contact"><br>
+        </div>
       </div>
 
     </form>
