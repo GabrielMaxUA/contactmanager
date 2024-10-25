@@ -21,6 +21,7 @@ if ($contact_id) {
         $email = $contact['eMail']; // Ensure column name matches exactly in the database
         $phone = $contact['phone'];
         $DOB = $contact['DOB'];
+        $imageName = $contact['imageName'];
     } else {
         // If no contact found, redirect to an error page
         header("Location: error.php");
@@ -70,6 +71,16 @@ if ($contact_id) {
         <div class="labs" id = "date">
           <label for="">DOB:</label> 
           <input type="date" name="DOB" value="<?php echo htmlspecialchars($DOB); ?>"><br>
+        </div>
+
+        <div class="labs" id = "image">
+          <?php if($imageName != NULL):?>
+          <img src="<?php echo htmlspecialchars('./images/' . $contact['imageName']); ?>" 
+            alt="<?php echo htmlspecialchars($contact['imageName']); ?>" 
+            style="width:100px; height:auto;" />
+            <? endif ?>
+          <label for="">Upload Image:</label>
+          <input type="file" name = "image"><br>
         </div>
         
         <div class="labs" id = "Labs">
