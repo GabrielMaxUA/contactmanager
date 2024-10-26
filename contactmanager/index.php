@@ -42,10 +42,10 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
       </tr>
         <?php foreach($contacts as $contact):?> <!--: instead of { } like in other languages -->
          <tr>
-         <td>
-            <img src="<?php echo htmlspecialchars('./images/' . $contact['imageName']); ?>" 
-            alt="<?php echo htmlspecialchars($contact['imageName']); ?>" 
-            style="width:100px; height:auto;" />
+          <td>
+          <img src="uploads/<?php echo htmlspecialchars($contact['imageName']); ?>" 
+          alt="<?php echo htmlspecialchars($contact['firstName'] . ' ' . $contact['lastName']); ?>" 
+          style="width:100px; height:auto;" />
           </td>
           <td><?php echo $contact['firstName'];?></td>
           <td><?php echo $contact['lastName'];?></td>
@@ -53,7 +53,7 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
           <td><?php echo $contact['phone'];?></td>
           <td><?php echo $contact['status'];?></td>
           <td><?php echo $contact['DOB'];?></td>
-          
+          <td>
           <form action="update_contact_form.php" method="post">
               <input type="hidden" name="contact_id" value="<?php echo $contact['contactID']; ?>">  
               <input type="submit" value="Update">

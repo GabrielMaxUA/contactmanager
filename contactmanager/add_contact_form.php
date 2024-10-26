@@ -19,7 +19,8 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
   <?php include("header.php"); ?>
   <main>
     <h2>Add contact</h2>
-    <form action = "add_contact.php" method = "post">
+    <form action = "add_contact.php" method = "post" enctype = "multipart/form-data
+    ">
       <div id ="data">
         <div class="labs">
           <label for="">First name:</label>
@@ -47,9 +48,10 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
         </div>
 
 
-        <div class="labs" id = "image">
+        <div class="labs" id = "image1">
           <label for="">Upload Image:</label>
-          <input type="file" name = "image"><br>
+          <input type="hidden" name="action" value="upload">
+          <input type="file" name = "file1"><br>
         </div>
         
         <div class="labs" id = "Labs">

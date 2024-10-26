@@ -21,7 +21,7 @@ if ($contact_id) {
         $email = $contact['eMail']; // Ensure column name matches exactly in the database
         $phone = $contact['phone'];
         $DOB = $contact['DOB'];
-        $imageName = $contact['imageName'];
+        // $imageName= $contact['imageName'];
     } else {
         // If no contact found, redirect to an error page
         header("Location: error.php");
@@ -46,7 +46,7 @@ if ($contact_id) {
   <?php include("header.php"); ?>
   <main>
     <h2>Update Contact</h2>
-    <form action="update.php" method="post">
+    <form action="update.php" method="post" enctype="multipart/form-data">
       <div id ="data">
         <div class="labs">
           <label for="first_name">First Name:</label>
@@ -74,11 +74,7 @@ if ($contact_id) {
         </div>
 
         <div class="labs" id = "image">
-          <?php if($imageName != NULL):?>
-          <img src="<?php echo htmlspecialchars('./images/' . $contact['imageName']); ?>" 
-            alt="<?php echo htmlspecialchars($contact['imageName']); ?>" 
-            style="width:100px; height:auto;" />
-            <? endif ?>
+        
           <label for="">Upload Image:</label>
           <input type="file" name = "image"><br>
         </div>
