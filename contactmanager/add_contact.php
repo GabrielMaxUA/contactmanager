@@ -13,7 +13,6 @@ require_once 'image_util.php'; // the process_image function
     $status = filter_input(INPUT_POST, 'status');
     $DOB = filter_input(INPUT_POST, 'DOB');
     $imageName = $_FILES['file1']['name'];
-    $action = filter_input(INPUT_POST, 'action');
   
         // Define the directory to save the image
         $targetDir = "uploads";
