@@ -3,8 +3,9 @@
 <?php
 
     session_start();
-    require_once('database.php');
-require_once 'image_util.php'; // the process_image function
+    require_once 'database.php';
+    //require_once 'image_util.php'; // the process_image function
+    
     // Getting data from the form
     $first_name = filter_input(INPUT_POST, 'first_name');
     $last_name = filter_input(INPUT_POST, 'last_name');
@@ -12,33 +13,8 @@ require_once 'image_util.php'; // the process_image function
     $phone = filter_input(INPUT_POST, 'phone');
     $status = filter_input(INPUT_POST, 'status');
     $DOB = filter_input(INPUT_POST, 'DOB');
-    $imageName = $_FILES['file1']['name'];
-  
-        // Define the directory to save the image
-        $targetDir = "uploads";
-        $targetDirPath = getcwd() . DIRECTORY_SEPARATOR . $targetDir;
+    $imageName = $_FILES['cImage']['name'];
 
-        // if ($action == NULL) {
-        //     $action = filter_input(INPUT_GET, 'action');
-        //     if ($action == NULL) {
-        //         $action = '';
-        //     }
-        // }
-     
-                if (isset($_FILES['file1'])) {
-                    $filename = $_FILES['file1']['name'];
-                    // // $imageName = $filename;
-                    // echo $filename;
-                    if (!empty($filename)) {
-                        $source = $_FILES['file1']['tmp_name'];
-                        $target = $targetDirPath . DIRECTORY_SEPARATOR . $filename;
-                        move_uploaded_file($source, $target);
-                        // echo $target;
-                        
-                        // create the '400' and '100' versions of the image
-                        process_image($targetDirPath, $filename);
-                    }
-                }
         
 //validating the inputs from add_contact_form
 if ($first_name == null || $last_name == null || $email == null || $phone == null || $DOB == null) {
@@ -49,12 +25,46 @@ if ($first_name == null || $last_name == null || $email == null || $phone == nul
     die(); // similar to return or break 
 } else {
    //connecting to the database once or per request
+   
+   $queryContacts = 'SELECT * FROM contacts';
+   $statement1 = $db->prepare($queryContacts);
+   $statement1->execute();
+   $contacts = $statement1->fetchAll();
+   $statement1->closeCursor();
+
+   foreach ($contacts as $contact)
+   {
+       if ($email_address == $contact["emailAddress"])
+       {
+           $_SESSION["add_error"] = "Invalid data, Duplicate Email Address. Try again.";
+
+           $url = "error.php";
+           header("Location: " . $url);
+           die();
+       }
+   }
+
+   $image_dir = 'uploads';
+   $image_dir_path = getcwd() . DIRECTORY_SEPARATOR . $image_dir;
+
+   if (isset($_FILES['cImage'])) {
+       $filename = $_FILES['cImage']['name'];
+       
+       if (!empty($filename)) {
+           $source = $_FILES['cImage']['tmp_name'];
+           
+           $target = $image_dir_path . DIRECTORY_SEPARATOR . $filename;
+           
+           move_uploaded_file($source, $target);
+           // create the '400' and '100' versions of the image
+           //process_image($image_dir_path, $filename);
+       }
+   }
 
     //adding data to the database
     $query = "INSERT INTO contacts (firstName, lastName, Email, phone, status, DOB, imageName ) 
         VALUES (:firstName, :lastName, :Email, :phone, :status, :DOB, :imageName)";
     $statement = $db->prepare($query);
-
     $statement->bindValue(':firstName', $first_name);
     $statement->bindValue(':lastName', $last_name);
     $statement->bindValue(':Email', $email);
@@ -62,7 +72,7 @@ if ($first_name == null || $last_name == null || $email == null || $phone == nul
     $statement->bindValue(':status', $status);
     $statement->bindValue(':DOB', $DOB);
     $statement->bindValue(':imageName', $imageName);
-    
+
     $statement->execute();
     $statement->closeCursor();
 }

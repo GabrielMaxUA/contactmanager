@@ -45,7 +45,7 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
           <td>
           <img src="uploads/<?php echo htmlspecialchars($contact['imageName']); ?>" 
           alt="<?php echo htmlspecialchars($contact['firstName'] . ' ' . $contact['lastName']); ?>" 
-          style="width:100px; height:auto;" />
+          style="width:80px; height:auto;" />
           </td>
           <td><?php echo $contact['firstName'];?></td>
           <td><?php echo $contact['lastName'];?></td>

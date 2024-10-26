@@ -76,7 +76,7 @@ if ($contact_id) {
         <div class="labs" id = "image">
         
           <label for="">Upload Image:</label>
-          <input type="file" name = "image"><br>
+          <input type="file" name = "cImage"><br>
         </div>
         
         <div class="labs" id = "Labs">

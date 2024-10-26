@@ -9,6 +9,7 @@ $last_name = filter_input(INPUT_POST, 'last_name');
 $email = filter_input(INPUT_POST, 'Email');
 $phone = filter_input(INPUT_POST, 'phone');
 $DOB = filter_input(INPUT_POST, 'DOB');
+$imageName = $_FILES['cImage']['name'];
 
 $queryContacts = 'SELECT * FROM contacts'; //retrieve variable
 $statement1 = $db-> prepare($queryContacts); //connecting data and webpage
@@ -26,6 +27,44 @@ foreach($contacts as $contact){
     }
 }
 
+   
+if (isset($_FILES['cImage'])) {
+    $filename = $_FILES['cImage']['name'];
+    
+    if (!empty($filename)) {
+        $image_dir = 'uploads';
+        $image_dir_path = getcwd() . DIRECTORY_SEPARATOR . $image_dir;
+        
+        if (!empty($contact['imageName'])) {
+            // Old image exists, move it to the "purchased" folder
+            $Pimage_dir = 'purchased';
+            $Pimage_dir_path = getcwd() . DIRECTORY_SEPARATOR . $Pimage_dir;
+
+            // Ensure the purchased folder exists
+            if (!is_dir($Pimage_dir_path)) {
+                mkdir($Pimage_dir_path, 0777, true);
+            }
+            
+            // Path of the old image to be moved
+            $old_image_path = $image_dir_path . DIRECTORY_SEPARATOR . $contact['imageName'];
+            
+            // Target path in the "purchased" folder
+            $purchased_image_target = $Pimage_dir_path . DIRECTORY_SEPARATOR . $contact['imageName'];
+           
+            if (file_exists($old_image_path)) {
+                rename($old_image_path, $purchased_image_target);
+            }
+        }
+        
+        // Process the new image upload
+        $source = $_FILES['cImage']['tmp_name'];
+        $target = $image_dir_path . DIRECTORY_SEPARATOR . $filename;
+        
+        move_uploaded_file($source, $target);
+    }
+}
+
+          
 
 
 // Validate the inputs
@@ -36,7 +75,8 @@ if ($contact_id == null || $first_name == null || $last_name == null || $email =
 }
 
 // Update existing contact
-$query = 'UPDATE contacts SET firstName = :firstName, lastName = :lastName, Email = :Email, phone = :phone, DOB = :DOB WHERE contactID = :contact_id';
+$query = 'UPDATE contacts SET firstName = :firstName, lastName = :lastName, Email = :Email, phone = :phone, DOB = :DOB , imageName = :imageName 
+WHERE contactID = :contact_id';
 $statement = $db->prepare($query);
 $statement->bindValue(':contact_id', $contact_id, PDO::PARAM_INT);
 $statement->bindValue(':firstName', $first_name);
@@ -44,6 +84,7 @@ $statement->bindValue(':lastName', $last_name);
 $statement->bindValue(':Email', $email);
 $statement->bindValue(':phone', $phone);
 $statement->bindValue(':DOB', $DOB);
+$statement->bindValue(':imageName', $imageName);
 
 // Execute the statement
 try {

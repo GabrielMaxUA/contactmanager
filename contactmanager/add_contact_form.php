@@ -54,7 +54,7 @@ $statement1-> closeCursor();//after data is fetched the dt connection closes
 
         <div class="labs" id = "image">
         <label>Upload Image:</label>
-        <input type="file" name="file1"><br>
+        <input type="file" name="cImage"><br>
           <!-- <label for="">Upload Image:</label>
           <input type="file" name = "file1"><br> -->
         </div>
