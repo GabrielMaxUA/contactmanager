@@ -28,42 +28,71 @@ foreach($contacts as $contact){
 }
 
    
-if (isset($_FILES['cImage'])) {
-    $filename = $_FILES['cImage']['name'];
+// if (isset($_FILES['cImage'])) {
+//     $filename = $_FILES['cImage']['name'];
     
-    if (!empty($filename)) {
-        $image_dir = 'uploads';
-        $image_dir_path = getcwd() . DIRECTORY_SEPARATOR . $image_dir;
+//     if (!empty($filename)) {
+//         $image_dir = 'uploads';
+//         $image_dir_path = getcwd() . DIRECTORY_SEPARATOR . $image_dir;
         
-        if (!empty($contact['imageName'])) {
-            // Old image exists, move it to the "purchased" folder
-            $Pimage_dir = 'purchased';
-            $Pimage_dir_path = getcwd() . DIRECTORY_SEPARATOR . $Pimage_dir;
+//         if (!empty($contact['imageName'])) {
+//             // Old image exists, move it to the "purchased" folder
+//             $Pimage_dir = 'purchased';
+//             $Pimage_dir_path = getcwd() . DIRECTORY_SEPARATOR . $Pimage_dir;
 
-            // Ensure the purchased folder exists
-            if (!is_dir($Pimage_dir_path)) {
-                mkdir($Pimage_dir_path, 0777, true);
-            }
+//             // Ensure the purchased folder exists
+//             if (!is_dir($Pimage_dir_path)) {
+//                 mkdir($Pimage_dir_path, 0777, true);
+//             }
             
-            // Path of the old image to be moved
-            $old_image_path = $image_dir_path . DIRECTORY_SEPARATOR . $contact['imageName'];
+//             // Path of the old image to be moved
+//             $old_image_path = $image_dir_path . DIRECTORY_SEPARATOR . $contact['imageName'];
             
-            // Target path in the "purchased" folder
-            $purchased_image_target = $Pimage_dir_path . DIRECTORY_SEPARATOR . $contact['imageName'];
+//             // Target path in the "purchased" folder
+//             $purchased_image_target = $Pimage_dir_path . DIRECTORY_SEPARATOR . $contact['imageName'];
            
-            if (file_exists($old_image_path)) {
-                rename($old_image_path, $purchased_image_target);
-            }
+//             if (file_exists($old_image_path)) {
+//                 rename($old_image_path, $purchased_image_target);
+//             }
+//         }
+        
+//         // Process the new image upload
+//         $source = $_FILES['cImage']['tmp_name'];
+//         $target = $image_dir_path . DIRECTORY_SEPARATOR . $filename;
+        
+//         move_uploaded_file($source, $target);
+//     }
+// }
+// Image processing
+if ($imageName) { // Only if a new image was uploaded
+    $image_dir = 'uploads';
+    $image_dir_path = getcwd() . DIRECTORY_SEPARATOR . $image_dir;
+    
+    // Move existing image to "purchased" if it exists
+    if (!empty($contact['imageName'])) {
+        $Pimage_dir = 'purchased';
+        $Pimage_dir_path = getcwd() . DIRECTORY_SEPARATOR . $Pimage_dir;
+
+        if (!is_dir($Pimage_dir_path)) {
+            mkdir($Pimage_dir_path, 0777, true);
         }
         
-        // Process the new image upload
-        $source = $_FILES['cImage']['tmp_name'];
-        $target = $image_dir_path . DIRECTORY_SEPARATOR . $filename;
+        $old_image_path = $image_dir_path . DIRECTORY_SEPARATOR . $contact['imageName'];
+        $purchased_image_target = $Pimage_dir_path . DIRECTORY_SEPARATOR . time() . '_' . $currentContact['imageName'];
         
-        move_uploaded_file($source, $target);
+        if (file_exists($old_image_path)) {
+            rename($old_image_path, $purchased_image_target);
+        }
     }
+    
+    // Process the new image upload
+    $source = $_FILES['cImage']['tmp_name'];
+    $target = $image_dir_path . DIRECTORY_SEPARATOR . $imageName;
+    move_uploaded_file($source, $target);
+} else {
+    // Keep the current image if no new image was uploaded
+    $imageName = $contact['imageName'];
 }
-
           
 
 
